@@ -19,6 +19,7 @@ class BendingArts {
   private subBendingTechnique(): string {
     return "Access to secret bending Technique";
   }
+  // We use constructors to initialize the object with the default or initial state.
   constructor(
     nation: string,
     jing: string,
@@ -38,9 +39,6 @@ class BendingArts {
   set numberOfAvatarBender(numberOfAvatar: number) {
     this.numberOfAvatar = numberOfAvatar;
   }
-  // public getBendingArt(): string {
-  //   return this.typeOfBending;
-  // }
 }
 
 /*------------------ GET and SET methods-----------------
@@ -82,8 +80,8 @@ class WaterBender extends BendingArts {
   ) {
     super(nation, jing, teacher, numberOfAvatar);
   }
-  showBloodBending(): string {
-    return "Person is blood bending";
+  showWaterBending(): string {
+    return "Person is water bending";
   }
 }
 const waterBender = new WaterBender(
@@ -104,7 +102,7 @@ for (let bender of benders) {
   if (bender instanceof FireBender) {
     console.log(bender.showFireBending());
   } else if (bender instanceof WaterBender) {
-    console.log(bender.showBloodBending());
+    console.log(bender.showWaterBending());
   }
   // When running the loop for each iteration of the loop, you would see the string "Demonstration of bending art" along with it's corresponding bending technique
 }
