@@ -1,4 +1,7 @@
-//Create Class
+/* ---------------------ABSTRACTION: -------------------------
+Related to giving the properties of a object, to only have whats necessary and will be used eventually.
+The purpose of of abstraction is to only expose what we’re interested and whats relevant and hide any irrelevant attributes or methods.
+ */
 var __extends =
   (this && this.__extends) ||
   (function () {
@@ -30,22 +33,15 @@ var __extends =
           : ((__.prototype = b.prototype), new __());
     };
   })();
+/* ---------------------ENCAPSULATION: -------------------------
+Allows the control of who can SEE and USE the attributes and method given to certain class.
+This is possible trough access modifiers:  public, private, protected and  default (no keyword). */
 var BendingArts = /** @class */ (function () {
-  function BendingArts(
-    nation,
-    jing,
-    teacher,
-    numberOfAvatar,
-    bendingTechnique,
-    subBendingTechnique
-  ) {
-    (this.nation = nation),
-      (this.jing = jing),
-      (this.teacher = teacher),
-      (this.numberOfAvatar = numberOfAvatar),
-      this.bendingTechnique();
-    this.subBendingTechnique();
-    // / this.subBendingTechnique () = subBendingTechnique, gives me error
+  function BendingArts(nation, jing, teacher, numberOfAvatar) {
+    this.nation = nation;
+    this.jing = jing;
+    this.teacher = teacher;
+    this.numberOfAvatar = numberOfAvatar;
   }
   BendingArts.prototype.bendingTechnique = function () {
     return "Demonstration of bending art";
@@ -65,45 +61,47 @@ var BendingArts = /** @class */ (function () {
   });
   return BendingArts;
 })();
-//Inheritance
+/*------------------ GET and SET methods-----------------
+Necessary for accessing and modifying private data
+ */
+/*---------------------INHERITANCE: -------------------------
+ Describes the relationship between the parent class and its child classes.
+  Just like in genetics, in the parent passes attributes and methods to their child, and the child can possess additional unique ones.
+Helps reuse, customize and enhance existing code*/
 var FireBender = /** @class */ (function (_super) {
   __extends(FireBender, _super);
-  function FireBender(
-    nation,
-    jing,
-    teacher,
-    numberOfAvatar,
-    bendingTechnique,
-    subBendingTechnique
-  ) {
-    return (
-      _super.call(
-        this,
-        nation,
-        jing,
-        teacher,
-        numberOfAvatar,
-        bendingTechnique,
-        subBendingTechnique
-      ) || this
-    );
+  function FireBender(nation, jing, teacher, numberOfAvatar) {
+    return _super.call(this, nation, jing, teacher, numberOfAvatar) || this;
   }
+  FireBender.prototype.showBending = function () {
+    return "Fire bending";
+  };
   return FireBender;
 })(BendingArts);
-//super avoids the repetitive use  "this."" keyword calling the attributes of the parent class
-// the constructor must have the same number of attributes as the parent class.
-//alternative to give values
-// const FireBender = new BendingArts(
-//   "Fire Nation",
-//   "positive jing",
-//   "dragons",
-//   2,
-// Fire Bending,
-//["Light Bending", "Combustion", "Redirection"]
+var fireBender = new FireBender("Fire Nation", "positive jing", "dragons", 2);
+console.log(fireBender);
+console.log(fireBender.bendingTechnique());
+console.log(fireBender.showBending());
+// const WaterBender = new BendingArts(
+//   "North and South Pole",
+//   "negative",
+//   "The Moon",
+//   2
 // );
-// console.log(FireBender.nation); che ck if it was saved
-// change number of avatars - encapsulation of keeping info safe
-// FireBender. numberOfAvatarBender = 5;
-//Abrastraction- Only have the attributes required to perform the methods
-//Encapsulation - Determines what can be accessed: public, private
-// atributes of an objects should be only be accessed inside of the class
+/* giving unique attributes
+class FireBender extends BendingArts {
+  constructor(agniKai: string) {
+    super();
+    this.agniKai = agniKai;
+  }
+  private agniKai: string;
+  public fireBending(): string {
+    return "Demonstration of fire bending";
+  }
+}
+
+ */
+/*---------------------POLYMORPHISM: -------------------------
+Polymorphism means a child class can define its own unique behavior and still share the same methods or behavior of its parent class.
+ Polymorphism allows for class specific behavior and more reusable code. A single function can operate on multiple types of data.
+*/
