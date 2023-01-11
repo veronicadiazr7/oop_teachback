@@ -95,19 +95,24 @@ const waterBender = new WaterBender(
   "The Moon",
   2
 );
+/*---------------------POLYMORPHISM: -------------------------
+Polymorphism means a child class can define its own unique behavior and still share the same methods or behavior of its parent class.
+ Polymorphism allows for class specific behavior and more reusable code. A single function can operate on multiple types of data. 
+*/
 
 let benders: BendingArts[] = [
   new FireBender("Fire Nation", "positive jing", "dragons", 2),
   new WaterBender("North and South Pole", "negative jing", "The Moon", 2),
   // new EarthBender("Earth Kingdom", "neutral", "earth", 4),
-  // new AirBender("Air Nomads", "positive", "sky bison", 0),
+  // new AirBender("Air Nomads", "positive", "sky bison", 5),
 ];
 
+// Inside the loop, the calls the bendingTechnique() method on the current object.
 for (let bender of benders) {
   console.log(bender.bendingTechnique());
 }
-
-/*---------------------POLYMORPHISM: -------------------------
-Polymorphism means a child class can define its own unique behavior and still share the same methods or behavior of its parent class.
- Polymorphism allows for class specific behavior and more reusable code. A single function can operate on multiple types of data. 
-*/
+/*it does not matter whether the current object is an instance of FireBender or WaterBender class, as both classes inherit
+ from the BendingArts class and have the bendingTechnique() method.
+The program can treat all the elements of the array as an instance of BendingArts class, and call the same method on all of them.
+When bendingTechnique() method is called on each of these instances, it is the method present in the parent class BendingArts that will be executed.
+ And it is executed for each of these instances by iterating over the array. */
