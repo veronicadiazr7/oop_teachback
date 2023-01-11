@@ -65,16 +65,13 @@ class FireBender extends BendingArts {
     return "Person is fire bending";
     //Adding a new method to the child class
   }
-  // public getBendingArt(): string {
-  //   return `this.typeOfBending show ${fir}`;
-  // }
 }
 
 const fireBender = new FireBender("Fire Nation", "positive jing", "dragons", 2);
-console.log(fireBender);
+// console.log(fireBender);
 
-console.log(fireBender.bendingTechnique());
-console.log(fireBender.showFireBending());
+// console.log(fireBender.bendingTechnique());
+// console.log(fireBender.showFireBending());
 
 class WaterBender extends BendingArts {
   constructor(
@@ -95,24 +92,32 @@ const waterBender = new WaterBender(
   "The Moon",
   2
 );
+
 /*---------------------POLYMORPHISM: -------------------------
 Polymorphism means a child class can define its own unique behavior and still share the same methods or behavior of its parent class.
  Polymorphism allows for class specific behavior and more reusable code. A single function can operate on multiple types of data. 
 */
+let benders: BendingArts[] = [fireBender, waterBender];
 
-let benders: BendingArts[] = [
-  new FireBender("Fire Nation", "positive jing", "dragons", 2),
-  new WaterBender("North and South Pole", "negative jing", "The Moon", 2),
-  // new EarthBender("Earth Kingdom", "neutral", "earth", 4),
-  // new AirBender("Air Nomads", "positive", "sky bison", 5),
-];
-
-// Inside the loop, the calls the bendingTechnique() method on the current object.
 for (let bender of benders) {
   console.log(bender.bendingTechnique());
+  if (bender instanceof FireBender) {
+    console.log(bender.showFireBending());
+  } else if (bender instanceof WaterBender) {
+    console.log(bender.showBloodBending());
+  }
+  // When running the loop for each iteration of the loop, you would see the string "Demonstration of bending art" along with it's corresponding bending technique
 }
-/*it does not matter whether the current object is an instance of FireBender or WaterBender class, as both classes inherit
- from the BendingArts class and have the bendingTechnique() method.
-The program can treat all the elements of the array as an instance of BendingArts class, and call the same method on all of them.
-When bendingTechnique() method is called on each of these instances, it is the method present in the parent class BendingArts that will be executed.
- And it is executed for each of these instances by iterating over the array. */
+
+/*In this example, the benders variable is declared as an array of BendingArts objects, and it is assigned two instances of FireBender and WaterBender. 
+The for...of loop iterates through the array, and it treats each object as an instance of the BendingArts class. 
+In the loop, it calls the bendingTechnique() method of each object, which is a method inherited from the BendingArts class. 
+Then we are checking with the help of instanceof keyword, whether the current bender is of FireBender class or WaterBender class 
+and calling the respective class specific method, showFireBending() and showBloodBending().
+
+This example demonstrates polymorphism because it allows objects of different classes to be treated as objects of a common superclass, 
+in this case, the BendingArts class. Even though FireBender and WaterBender have different methods, they can both be treated as BendingArts 
+objects because they have the same properties and methods as that class.
+
+
+ */

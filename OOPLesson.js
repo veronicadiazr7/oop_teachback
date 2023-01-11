@@ -42,6 +42,7 @@ var BendingArts = /** @class */ (function () {
     this.jing = jing;
     this.teacher = teacher;
     this.numberOfAvatar = numberOfAvatar;
+    this.typeOfBending = this.typeOfBending;
   }
   BendingArts.prototype.bendingTechnique = function () {
     return "Demonstration of bending art";
@@ -73,35 +74,56 @@ var FireBender = /** @class */ (function (_super) {
   function FireBender(nation, jing, teacher, numberOfAvatar) {
     return _super.call(this, nation, jing, teacher, numberOfAvatar) || this;
   }
-  FireBender.prototype.showBending = function () {
-    return "Fire bending";
+  FireBender.prototype.showFireBending = function () {
+    return "Person is fire bending";
+    //Adding a new method to the child class
   };
   return FireBender;
 })(BendingArts);
 var fireBender = new FireBender("Fire Nation", "positive jing", "dragons", 2);
-console.log(fireBender);
-console.log(fireBender.bendingTechnique());
-console.log(fireBender.showBending());
-// const WaterBender = new BendingArts(
-//   "North and South Pole",
-//   "negative",
-//   "The Moon",
-//   2
-// );
-/* giving unique attributes
-class FireBender extends BendingArts {
-  constructor(agniKai: string) {
-    super();
-    this.agniKai = agniKai;
+// console.log(fireBender);
+// console.log(fireBender.bendingTechnique());
+// console.log(fireBender.showFireBending());
+var WaterBender = /** @class */ (function (_super) {
+  __extends(WaterBender, _super);
+  function WaterBender(nation, jing, teacher, numberOfAvatar) {
+    return _super.call(this, nation, jing, teacher, numberOfAvatar) || this;
   }
-  private agniKai: string;
-  public fireBending(): string {
-    return "Demonstration of fire bending";
-  }
-}
-
- */
+  WaterBender.prototype.showBloodBending = function () {
+    return "Person is blood bending";
+  };
+  return WaterBender;
+})(BendingArts);
+var waterBender = new WaterBender(
+  "North and South Pole",
+  "Negative jing",
+  "The Moon",
+  2
+);
 /*---------------------POLYMORPHISM: -------------------------
 Polymorphism means a child class can define its own unique behavior and still share the same methods or behavior of its parent class.
  Polymorphism allows for class specific behavior and more reusable code. A single function can operate on multiple types of data.
 */
+var benders = [fireBender, waterBender];
+for (var _i = 0, benders_1 = benders; _i < benders_1.length; _i++) {
+  var bender = benders_1[_i];
+  console.log(bender.bendingTechnique());
+  if (bender instanceof FireBender) {
+    console.log(bender.showFireBending());
+  } else if (bender instanceof WaterBender) {
+    console.log(bender.showBloodBending());
+  }
+  // console.log(bender); And for each iteration of the loop, you would see the string "Demonstration of bending art" along with it's corresponding bending technique
+}
+/*In this example, the benders variable is declared as an array of BendingArts objects, and it is assigned two instances of FireBender and WaterBender.
+The for...of loop iterates through the array, and it treats each object as an instance of the BendingArts class.
+In the loop, it calls the bendingTechnique() method of each object, which is a method inherited from the BendingArts class.
+Then we are checking with the help of instanceof keyword, whether the current bender is of FireBender class or WaterBender class
+and calling the respective class specific method, showFireBending() and showBloodBending().
+
+This example demonstrates polymorphism because it allows objects of different classes to be treated as objects of a common superclass,
+in this case, the BendingArts class. Even though FireBender and WaterBender have different methods, they can both be treated as BendingArts
+objects because they have the same properties and methods as that class.
+
+
+ */
