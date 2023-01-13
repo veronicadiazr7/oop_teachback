@@ -1,11 +1,9 @@
 /* ---------------------ABSTRACTION: -------------------------
-Related to giving the properties of a object, to only have whats necessary and will be used eventually.
-The purpose of of abstraction is to only expose what we’re interested and whats relevant and hide any irrelevant attributes or methods. 
- */
-
-/* ---------------------ENCAPSULATION: -------------------------
-Allows the control of who can SEE and USE the attributes and method given to certain class.
-This is possible trough access modifiers:  public, private, protected and  default (no keyword). */
+Related to giving the properties of an object, to only have what's necessary and will be used eventually.
+The purpose of abstraction is to only expose what we're interested and what's relevant and hide any irrelevant attributes or methods. 
+ ---------------------ENCAPSULATION: -------------------------
+Allows the control of who can SEE and USE the attributes and methods given to a certain class.
+This is possible through access modifiers:  public, private, protected, and default (no keyword). */
 class BendingArts {
   public nation: string;
   public jing: string;
@@ -61,7 +59,7 @@ class FireBender extends BendingArts {
   }
   showFireBending(): string {
     return "Person is fire bending";
-    //Adding a new method to the child class
+    //Adding a new method that's unique to the child class
   }
 }
 
@@ -83,6 +81,7 @@ class WaterBender extends BendingArts {
   showWaterBending(): string {
     return "Person is water bending";
   }
+  //Adding a new method that's unique to the child class
 }
 const waterBender = new WaterBender(
   "North and South Pole",
